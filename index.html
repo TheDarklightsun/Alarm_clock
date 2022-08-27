@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Alarm</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 <body>
 <div id="alarm">
@@ -21,7 +21,7 @@
     <div id="set-alarm">
         <div id="alarm-item">
             <div id="alarm-items">
-                <input id="add" name="time" type="text" maxlength="8" autofocus>
+                <input id="add" name="time" type="text" maxlength="8" onkeyup="this.value = this.value.replace (/[^0-9:]/, '')" autofocus>
                 <button type="submit" id="set-alarm-btn"> Set Alarm </button>
             </div>
         </div>
@@ -42,6 +42,6 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="index.js"></script>
+<script type="text/javascript" src="./js/index.js"></script>
 </body>
 </html>
