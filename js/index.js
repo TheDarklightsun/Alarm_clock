@@ -151,6 +151,3 @@ fullscreen_alarm_stop_btn.onclick = function () {
     localStorage.setItem('alarms', JSON.stringify(alarms));
 }
 initializeApp()
-
-
-
