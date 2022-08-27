@@ -1,9 +1,9 @@
 body {
-    background: #121212;
+    background: #FFFFFF;
     font-family: cursive;
     display: flex;
     justify-content: center;
-    color: #FFFFFF;
+    color: #121212;
 }
 
 #time {
@@ -14,7 +14,6 @@ body {
     box-shadow: -1px -1px 3px rgba(255,255,255,0.05),
     1px 1px 2px rgba(0,0,0,0.5);
     font-size: 60px;
-    color: #FFFFFF;
     letter-spacing: 5px;
     font-family: 'Orbitron', sans-serif;
 }
@@ -31,10 +30,9 @@ body {
 }
 
 #set-alarm input{
-    color: #FFFFFF;
     width: 60%;
     height: 100%;
-    background: #121212;
+    background: #FFFFFF;
     font-size: 30px;
     box-shadow: -1px -1px 3px rgba(255,255,255,0.05),
     1px 1px 2px rgba(0,0,0,0.5);
@@ -43,11 +41,10 @@ body {
 #set-alarm-btn {
     width: 45%;
     height: 100%;
-    color: #FFFFFF;
     font-size: 1.2rem;
     font-family: cursive;
     font-weight: bold;
-    background: #121212;
+    background: #FFFFFF;
     border-radius: 10px;
     transform: scale(0.8,0.7);
     transition: all ease-in-out 250ms;
@@ -63,7 +60,6 @@ body {
 }
 
 #alarm-list-title {
-    color: #FFFFFF;
     justify-content: center;
     padding: 43px;
 }
@@ -112,7 +108,6 @@ section {
     width: auto;
     font-weight: bolder;
     font-size: 1.2rem;
-    color: #FFFFFF;
 }
 
 #alarm-list-display-delete-btn{
@@ -120,8 +115,10 @@ section {
     height: auto;
     margin-right: 2vw;
     padding: 2px;
+    border: 1px solid #121212;
+    box-shadow: -1px -1px 3px rgba(255,255,255,0.05),
+    1px 1px 2px rgba(0,0,0,0.5);
 }
-
 #alarm-list-display-delete-btn:hover{
     cursor: pointer;
     transform: scale(1.1,1.1);
@@ -129,13 +126,12 @@ section {
 
 .fullscreen-alarm {
     display: none;
-    background: #121212;
-    box-shadow: -1px -1px 3px rgba(255,255,255,0.05),
-    1px 1px 2px rgba(0,0,0,0.5);
+    background: #FFFFFF;
+    border: 1px solid #121212;
     position: fixed;
-    margin-top: -450px;
+    margin-top: -500px;
     height: 300px;
-    width: 334px;
+    width: 485px;
     line-height: 100px;
     text-align: center;
 }
@@ -147,10 +143,11 @@ section {
 }
 
 .alarm-gif {
+    display: flex;
     margin-top: 10px;
-    margin-left: 35%;
-    width: 30%;
-    height: 30%;
+    margin-left: 40%;
+    width: 20%;
+    height: 20%;
     box-shadow: -1px -1px 3px rgba(255,255,255,0.05),
     1px 1px 2px rgba(0,0,0,0.5);
     border-radius: 25px;
@@ -164,6 +161,7 @@ section {
     color: #444444;
     box-shadow: -1px -1px 3px rgba(255,255,255,0.05),
     1px 1px 2px rgba(0,0,0,0.5);
+    border: 2px solid #121212;
     width: 230px;
     margin: 45px auto;
     text-align: center;
@@ -171,7 +169,7 @@ section {
 }
 
 .alarm-stop:hover {
-    color: #FFFFFF;
+    color: #121212;
     background-color: transparent;
     border-color: #666;
     transform: scale(1.1);
