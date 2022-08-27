@@ -1,14 +1,46 @@
 //adds element in js
 const currentTime = document.getElementById('time');
-const  input = document.getElementById('add');
+const input = document.getElementById('add');
 const setAlarming = document.getElementById('set-alarm-btn');
-const fullscreen_alarm = document.querySelector(".fullscreen-alarm")
-const fullscreen_alarm_text = document.querySelector(".fullscreen-alarm-text")
-const fullscreen_alarm_stop_btn = document.querySelector(".alarm-stop")
 const alarmList = document.getElementById('alarm-list-display');
+
+const fullscreen_alarm = document.querySelector(".fullscreen-alarm");
+const fullscreen_alarm_text = document.querySelector(".fullscreen-alarm-text");
+const fullscreen_alarm_stop_btn = document.querySelector(".alarm-stop");
+
+// input calibration
+input.addEventListener('input', e => {
+    const x = e.target.value;
+
+    input.value = x.length ? x.replace(/:/g, '').match(/.{1,2}/g).join(':') : '';
+});
+
+input.addEventListener('input', function() {
+    let a = this.value;
+    let sum = a[0] + a[1];
+    let sum2 = a[3] + a[4];
+    let sum3 = a[6] + a[7];
+
+    if (this.value.length > 1 && this.value.length <= 2) {
+        if (sum > 23) {
+            this.value = a[0];
+        }
+    }
+    if (this.value.length > 4 && this.value.length <= 5) {
+        if (sum2 > 59) {
+            this.value = sum + ':' + a[3];
+        }
+    }
+    if (this.value.length > 7 && this.value.length <= 8) {
+        if (sum3 > 59) {
+            this.value = sum + ':' + a[6];
+        }
+    }
+});
 
 //adds audio
 const audio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-alarm-digital-clock-beep-989.mp3');
+
 audio.loop = true;
 
 //add alarms in localStorage
@@ -20,17 +52,18 @@ let currentHours = today.getHours();
 let currentMinutes = today.getMinutes();
 let currentSeconds = today.getSeconds();
 let time = currentHours + ":" + currentMinutes + ":" + currentSeconds;
+
 currentTime.innerHTML = time;
 
 // Updating current time every second
 function timeInterval() {
     today = new Date();
     currentHours = today.getHours();
-    currentHours = ("0"+currentHours).slice(-2);
     currentMinutes = today.getMinutes();
-    currentMinutes = ("0"+currentMinutes).slice(-2);
     currentSeconds = today.getSeconds();
-    currentSeconds = ("0"+currentSeconds).slice(-2);
+    currentHours = ("0" + currentHours).slice(-2);
+    currentMinutes = ("0" + currentMinutes).slice(-2);
+    currentSeconds = ("0" + currentSeconds).slice(-2);
     time =  currentHours + ":" + currentMinutes + ":" + currentSeconds;
     currentTime.innerHTML = time;
 }
@@ -50,7 +83,7 @@ function checkAlarm() {
             deleteAlarm(alarms[i]);
 
             fullscreen_alarm.style.display = 'block';
-            fullscreen_alarm_text.innerHTML = localStorage.getItem("alarm-text")
+            fullscreen_alarm_text.innerHTML = localStorage.getItem('alarm-text');
 
             function displayNone() {
                 if (fullscreen_alarm.style.display === 'block') {
@@ -67,9 +100,10 @@ function checkAlarm() {
 setInterval(checkAlarm,1000);
 
 //add alarm in HTML
-function addAlarmToDom(alarm){
+function addAlarmToDom(alarm) {
     let id = alarm;
     const ul = document.createElement('section');
+
     ul.innerHTML = `
 				<div class="alarm-list-display-time" id="${id}">
 						${alarm}
@@ -82,7 +116,8 @@ function addAlarmToDom(alarm){
 // for showing list of alarms, Alarm List is rendered below.
 function renderList() {
     alarmList.innerHTML = '';
-    for(let i = 0; i < alarms.length; i++){
+
+    for(let i = 0; i < alarms.length; i++) {
         addAlarmToDom(alarms[i]);
     }
     localStorage.setItem('alarms', JSON.stringify(alarms));
@@ -90,9 +125,10 @@ function renderList() {
 
 // For deleting alarm from list
 function deleteAlarm(alarmId) {
-    let newAlarms = alarms.filter(function(alarm){
-        return alarm !== alarmId
+    let newAlarms = alarms.filter(function(alarm) {
+        return alarm !== alarmId;
     });
+
     alarms = newAlarms;
     renderList();
     return alarmId;
@@ -100,7 +136,7 @@ function deleteAlarm(alarmId) {
 
 // before rendering alarm must be added to array of AlarmList by below code
 function addAlarm(alarm) {
-    if(alarm){
+    if(alarm) {
         alarms.push(alarm);
         renderList();
         return alarm;
@@ -108,9 +144,10 @@ function addAlarm(alarm) {
 }
 
 // handler for deleting alarm
-function handleClickListener(e){
+function handleClickListener(e) {
     const target = e.target;
-    if(target.className === 'delete'){
+
+    if(target.className === 'delete') {
         const alarmId = target.dataset.id;
         deleteAlarm(alarmId);
         return target;
@@ -118,25 +155,26 @@ function handleClickListener(e){
 }
 
 // handler for setting Alarm
-function setAlarmListener(){
-    let newAlarms = alarms.filter(function(alarm){
+function setAlarmListener() {
+    let newAlarms = alarms.filter(function(alarm) {
         return alarm === input.value;
     });
+
     localStorage.setItem('alarms', JSON.stringify(alarms));
-    if(newAlarms.length===0){
+    if(newAlarms.length===0) {
         addAlarm(input.value);
         return newAlarms;
     } else {
-        alert("Same alarm exist")
+        alert("Same alarm exist");
         return newAlarms;
     }
 }
 
 // starting of App by below code
-function initializeApp(){
+function initializeApp() {
     document.addEventListener('click',handleClickListener);
     setAlarming.addEventListener('click', setAlarmListener);
-    addAlarmToDom(alarms, alarms)
+    addAlarmToDom(alarms, alarms);
 }
 
 //correct audio mute
@@ -150,4 +188,5 @@ fullscreen_alarm_stop_btn.onclick = function () {
     location.reload();
     localStorage.setItem('alarms', JSON.stringify(alarms));
 }
-initializeApp()
+
+initializeApp();
