@@ -116,10 +116,7 @@ function addAlarmToDom(alarm) {
 // for showing list of alarms, Alarm List is rendered below.
 function renderList() {
     alarmList.innerHTML = '';
-
-    for(let i = 0; i < alarms.length; i++) {
-        addAlarmToDom(alarms[i]);
-    }
+    initializeApp();
     localStorage.setItem('alarms', JSON.stringify(alarms));
 }
 
@@ -130,6 +127,7 @@ function deleteAlarm(alarmId) {
     });
 
     alarms = newAlarms;
+    localStorage.setItem('alarms', JSON.stringify(alarms));
     renderList();
     return alarmId;
 }
@@ -174,7 +172,10 @@ function setAlarmListener() {
 function initializeApp() {
     document.addEventListener('click',handleClickListener);
     setAlarming.addEventListener('click', setAlarmListener);
-    addAlarmToDom(alarms, alarms);
+    for(let i = 0; i < alarms.length; i++) {
+        addAlarmToDom(alarms[i]);
+        localStorage.setItem('alarms', JSON.stringify(alarms));
+    }
 }
 
 //correct audio mute
