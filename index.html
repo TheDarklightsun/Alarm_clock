@@ -12,17 +12,25 @@
 <div id="alarm">
     <div id="item-alarm">
         <div id="items">
-            <h1 id="text-alarm">
-                Alarm
-            </h1>
-            <div id="time"></div>
+            <div class="my-card__media mdc-card__media mdc-card__media--16-9">
+                <div class="mdc-card__media-content1" id="text-alarm">Alarm</div>
+                <div class="mdc-card__media-content2" id="time"></div>
+            </div>
         </div>
     </div>
     <div id="set-alarm">
         <div id="alarm-item">
             <div id="alarm-items">
-                <input id="add" name="time" type="text" maxlength="8" onkeyup="this.value = this.value.replace (/[^0-9:]/, '')" autofocus>
-                <button type="submit" id="set-alarm-btn"> Set Alarm </button>
+                <label class="mdc-text-field mdc-text-field--filled">
+                    <span class="mdc-text-field__ripple"></span>
+                    <span class="mdc-floating-label" id="my-label-id">Hint text</span>
+                    <input class="mdc-text-field__input" aria-labelledby="my-label-id" id="add" name="time" type="text" maxlength="8" onkeyup="this.value = this.value.replace (/[^0-9:]/, '')" autofocus>
+                    <span class="mdc-line-ripple"></span>
+                </label>
+                <button class="mdc-button mdc-button--outlined" type="submit" id="set-alarm-btn">
+                    <span class="mdc-button__ripper"></span>
+                    <span class="mdc-button__label">Set Alarm</span>
+                </button>
             </div>
         </div>
     </div>

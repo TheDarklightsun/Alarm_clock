@@ -103,6 +103,10 @@ section {
     flex-direction: row;
     justify-content:space-between;
 }
+.my-card {
+    height: 350px;
+    width: 350px;
+}
 
 .alarm-list-display-time{
     width: auto;
