@@ -23,9 +23,9 @@
     <div id="set-alarm">
         <div id="alarm-item">
             <div id="alarm-items">
-                <label class="mdc-text-field mdc-text-field--filled">
+                <label class="mdc-text-field mdc-text-field--no-label">
                     <span class="mdc-text-field__ripple"></span>
-                    <input class="mdc-text-field__input" aria-labelledby="my-label-id" id="add" name="time" type="text" maxlength="8" onkeyup="this.value = this.value.replace (/[^0-9:]/, '')" autofocus>
+                    <input class="mdc-text-field__input" placeholder="Time" aria-label="Label" id="add" name="time" type="text" maxlength="8" onkeyup="this.value = this.value.replace(/[^0-9:]/, '')" autofocus>
                     <span class="mdc-line-ripple"></span>
                 </label>
                 <button class="mdc-button1 mdc-button--outlined" type="submit" id="set-alarm-btn">

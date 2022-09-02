@@ -15,28 +15,38 @@ input.addEventListener('input', e => {
     input.value = x.length ? x.replace(/:/g, '').match(/.{1,2}/g).join(':') : '';
 });
 
+let name = document.querySelector('input'); // Получаем input
+let regex = /[^\d\:]/g; // регулярка только цифры
+
+name.oninput = function() {
+    this.value = this.value.replace(regex, '');
+}
+
 input.addEventListener('input', function() {
     let a = this.value;
     let sum = a[0] + a[1];
     let sum2 = a[3] + a[4];
     let sum3 = a[6] + a[7];
 
-    if (this.value.length > 1 && this.value.length <= 2) {
-        if (sum > 23) {
-            this.value = a[0];
+        if (this.value.length > 1 && this.value.length <= 2) {
+            if (sum > 23) {
+                this.value = a[0];
+                alert('||==========||\nNo more "24"\n||==========||\nCorrect writing\n||==========||\n23:59:59');
+            }
         }
-    }
-    if (this.value.length > 4 && this.value.length <= 5) {
-        if (sum2 > 59) {
-            this.value = sum + ':' + a[3];
+        if (this.value.length > 4 && this.value.length <= 5) {
+            if (sum2 > 59) {
+                this.value = sum + ':' + a[3];
+                alert('||==========||\nNo more "60"\n||==========||\nCorrect writing\n||==========||\n23:59:59');
+            }
         }
-    }
-    if (this.value.length > 7 && this.value.length <= 8) {
-        if (sum3 > 59) {
-            this.value = sum + ':' + a[6];
+        if (this.value.length > 7 && this.value.length <= 8) {
+            if (sum3 > 59) {
+                this.value = sum + ':' + sum2 + ':' + a[6];
+                alert('||==========||\nNo more "60"\n||==========||\nCorrect writing\n||==========||\n23:59:59');
+            }
         }
-    }
-});
+    });
 
 //adds audio
 const audio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-alarm-digital-clock-beep-989.mp3');
@@ -46,26 +56,15 @@ audio.loop = true;
 //add alarms in localStorage
 let alarms = JSON.parse(localStorage.getItem('alarms')) || [];
 
-//adds time
-let today = new Date();
-let currentHours = today.getHours();
-let currentMinutes = today.getMinutes();
-let currentSeconds = today.getSeconds();
-let time = currentHours + ":" + currentMinutes + ":" + currentSeconds;
-
-currentTime.innerHTML = time;
-
 // Updating current time every second
 function timeInterval() {
-    today = new Date();
-    currentHours = today.getHours();
-    currentMinutes = today.getMinutes();
-    currentSeconds = today.getSeconds();
-    currentHours = ("0" + currentHours).slice(-2);
-    currentMinutes = ("0" + currentMinutes).slice(-2);
-    currentSeconds = ("0" + currentSeconds).slice(-2);
-    time =  currentHours + ":" + currentMinutes + ":" + currentSeconds;
-    currentTime.innerHTML = time;
+    let today = new Date();
+    let hours = today.getHours() < 10 ? '0' + today.getHours() : today.getHours();
+    let minutes = today.getMinutes() < 10 ? '0' + today.getMinutes() : today.getMinutes();
+    let sec = today.getSeconds() < 10 ? '0' + today.getSeconds() : today.getSeconds();
+
+    currentTime.innerHTML = `${hours}:${minutes}:${sec}`;
+    localStorage.setItem('alarms', JSON.stringify(alarms));
 }
 setInterval(timeInterval,1000);
 
@@ -111,10 +110,10 @@ function addAlarmToDom(alarm) {
 				<button class="mdc-button2 mdc-button--outlined" type="submit" id="set-alarm-btn">
                     <span class="delete" class="mdc-button__label"id="alarm-list-display-delete-btn" data-id="${id}">Delete</span>
                 </button>
-				
 			`
     alarmList.append(ul);
 }
+
 
 // for showing list of alarms, Alarm List is rendered below.
 function renderList() {
@@ -125,7 +124,7 @@ function renderList() {
 
 // For deleting alarm from list
 function deleteAlarm(alarmId) {
-    let newAlarms = alarms.filter(alarm => { return alarm !== alarmId });
+    let newAlarms = alarms.filter(alarm => alarm !== alarmId);
 
     alarms = newAlarms;
     localStorage.setItem('alarms', JSON.stringify(alarms));
@@ -156,24 +155,23 @@ function handleClickListener(e) {
 
 // handler for setting Alarm
 function setAlarmListener() {
-    let newAlarms = alarms.filter(function(alarm) {
-        return alarm === input.value;
-    });
+    let newAlarms = alarms.filter(alarm => alarm === input.value);
     localStorage.setItem('alarms', JSON.stringify(alarms));
 
-    if(newAlarms.length===0) {
-        addAlarm(input.value);
-        return newAlarms;
-    } else {
-        alert("Same alarm exist");
-        return newAlarms;
+        if (newAlarms.length === 0 && input.value.length >= 8) {
+            addAlarm(input.value);
+            return newAlarms;
+        } else {
+            alert("Same alarm exist\n\nOR\n\nEnter 8 digits");
+            return newAlarms;
+        }
     }
-}
 
 // starting of App by below code
 function initializeApp() {
     document.addEventListener('click',handleClickListener);
     setAlarming.addEventListener('click', setAlarmListener);
+
     for(let i = 0; i < alarms.length; i++) {
         addAlarmToDom(alarms[i]);
         localStorage.setItem('alarms', JSON.stringify(alarms));

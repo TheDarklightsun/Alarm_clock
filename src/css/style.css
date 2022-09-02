@@ -1,13 +1,23 @@
 body {
     background: #FFFFFF;
-    font-family: 'late', cursive;
+    font-family: "Lato", sans-serif;
     display: flex;
+    align-items: center;
     justify-content: center;
     color: #121212;
 }
 
-#alarm {
-    margin-top: -100px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.menu {
+    position: fixed;
+    right: 10px;
+    top: 20%;
+    padding: 10px;
 }
 
 #text-alarm {
@@ -18,38 +28,30 @@ body {
 
 #time {
     height: 120px;
+    width: 335px;
     line-height: 120px;
     text-align: center;
     padding: 0 30px;
+    margin: 0 5px;
     box-shadow: -1px -1px 3px rgba(255,255,255,0.05),
     1px 1px 2px rgba(0,0,0,0.5);
     font-size: 60px;
     letter-spacing: 5px;
-    font-family: 'late', sans-serif;
 }
 
 #alarm-items {
-    margin: 40px 0 40px 0;
+    margin: 40px 5px;
     display: flex;
     justify-content:space-between;
 }
 
-.mdc-text-field.mdc-text-field--filled {
-    height: 35px;
+.mdc-text-field {
     width: 100px;
-}
-
-.mdc-line-ripple {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    top: 49px;
-    width: 100%;
-    content: "";
 }
 
 .mdc-button1 {
     margin-left: 25px;
+    cursor: pointer
 }
 
 #alarm-list-title {
@@ -59,6 +61,10 @@ body {
     padding: 25px;
     box-shadow: -1px -1px 3px rgba(255,255,255,0.05),
     1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.mdc-card.mdc-card--outlined {
+    margin: 0 5px;
 }
 
 .my-card-content {
@@ -82,22 +88,25 @@ section {
 
 .alarm-list-display-time {
     margin: 10px;
-    padding: 5px;
+    padding: 8px;
 }
 
 .mdc-button2 {
     margin: 10px;
+    cursor: pointer
 }
 
 .fullscreen-alarm {
     display: none;
     background: #FFFFFF;
-    border: 1px solid #121212;
+    border: #666666 solid 1px;
+    box-shadow: -1px -1px 3px rgba(255,255,255,0.05),
+    1px 1px 2px rgba(0,0,0,0.5);
     border-radius: 5px;
     position: fixed;
-    margin-top: -503px;
-    height: 327px;
-    width: 332px;
+    margin: -250px 5px;
+    height: 335px;
+    width: 335px;
     line-height: 100px;
     text-align: center;
 }
@@ -114,6 +123,7 @@ section {
     margin-left: 40%;
     width: 20%;
     height: 20%;
+    border-radius: 30px;
     box-shadow: -1px -1px 3px rgba(255,255,255,0.05),
     1px 1px 2px rgba(0,0,0,0.5);
 }
@@ -125,6 +135,8 @@ section {
     text-transform: uppercase;
     color: mediumpurple;
     border: 1px solid #666;
+    box-shadow: -1px -1px 3px rgba(255,255,255,0.05),
+    1px 1px 2px rgba(0,0,0,0.5);
     border-radius: 5px;
     width: 230px;
     margin: 45px auto;
