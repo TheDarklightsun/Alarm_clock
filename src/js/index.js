@@ -156,9 +156,7 @@ function handleClickListener(e) {
 
 // handler for setting Alarm
 function setAlarmListener() {
-    let newAlarms = alarms.filter(function(alarm) {
-        return alarm === input.value;
-    });
+    let newAlarms = alarms.filter(alarm => { return alarm === input.value });
     localStorage.setItem('alarms', JSON.stringify(alarms));
 
     if(newAlarms.length===0) {
