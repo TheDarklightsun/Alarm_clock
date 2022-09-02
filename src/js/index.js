@@ -125,9 +125,7 @@ function renderList() {
 
 // For deleting alarm from list
 function deleteAlarm(alarmId) {
-    let newAlarms = alarms.filter(function(alarm) {
-        return alarm !== alarmId;
-    });
+    let newAlarms = alarms.filter(alarm => { return alarm !== alarmId });
 
     alarms = newAlarms;
     localStorage.setItem('alarms', JSON.stringify(alarms));
@@ -150,6 +148,7 @@ function handleClickListener(e) {
 
     if(target.className === 'delete') {
         const alarmId = target.dataset.id;
+
         deleteAlarm(alarmId);
         return target;
     }
@@ -160,8 +159,8 @@ function setAlarmListener() {
     let newAlarms = alarms.filter(function(alarm) {
         return alarm === input.value;
     });
-
     localStorage.setItem('alarms', JSON.stringify(alarms));
+
     if(newAlarms.length===0) {
         addAlarm(input.value);
         return newAlarms;
