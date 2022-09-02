@@ -1,0 +1,140 @@
+body {
+    background: #FFFFFF;
+    font-family: 'late', cursive;
+    display: flex;
+    justify-content: center;
+    color: #121212;
+}
+
+#alarm {
+    margin-top: -100px;
+}
+
+#text-alarm {
+    font-size: 60px;
+    text-align: center;
+    margin: 30px 0;
+}
+
+#time {
+    height: 120px;
+    line-height: 120px;
+    text-align: center;
+    padding: 0 30px;
+    box-shadow: -1px -1px 3px rgba(255,255,255,0.05),
+    1px 1px 2px rgba(0,0,0,0.5);
+    font-size: 60px;
+    letter-spacing: 5px;
+    font-family: 'late', sans-serif;
+}
+
+#alarm-items {
+    margin: 40px 0 40px 0;
+    display: flex;
+    justify-content:space-between;
+}
+
+.mdc-text-field.mdc-text-field--filled {
+    height: 35px;
+    width: 100px;
+}
+
+.mdc-line-ripple {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    top: 49px;
+    width: 100%;
+    content: "";
+}
+
+.mdc-button1 {
+    margin-left: 25px;
+}
+
+#alarm-list-title {
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    padding: 25px;
+    box-shadow: -1px -1px 3px rgba(255,255,255,0.05),
+    1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.my-card-content {
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+}
+
+.my-card {
+    height: 350px;
+    width: 350px;
+}
+
+section {
+    font-size: 20px;
+    box-shadow: -1px -1px 3px rgba(255,255,255,0.05),
+    1px 1px 2px rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: space-between;
+}
+
+.alarm-list-display-time {
+    margin: 10px;
+    padding: 5px;
+}
+
+.mdc-button2 {
+    margin: 10px;
+}
+
+.fullscreen-alarm {
+    display: none;
+    background: #FFFFFF;
+    border: 1px solid #121212;
+    border-radius: 5px;
+    position: fixed;
+    margin-top: -503px;
+    height: 327px;
+    width: 332px;
+    line-height: 100px;
+    text-align: center;
+}
+
+.alarm-items-fullscreen {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.alarm-gif {
+    display: flex;
+    margin-top: 10px;
+    margin-left: 40%;
+    width: 20%;
+    height: 20%;
+    box-shadow: -1px -1px 3px rgba(255,255,255,0.05),
+    1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.alarm-stop {
+    font-size: 50px;
+    cursor: pointer;
+    user-select: none;
+    text-transform: uppercase;
+    color: mediumpurple;
+    border: 1px solid #666;
+    border-radius: 5px;
+    width: 230px;
+    margin: 45px auto;
+    text-align: center;
+    transition: 1s;
+}
+
+.alarm-stop:hover {
+    color: rebeccapurple;
+    background-color: transparent;
+    border-color: #666;
+    transform: scale(1.1);
+}
